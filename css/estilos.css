@@ -1,0 +1,225 @@
+/* ===== Paleta Neapolitan =====
+   #604734 café   #FCF7D9 crema   #F6D8D6 rosa claro   #F0C5D4 rosa */
+
+body {
+    color: #604734;
+    background-color: #FCF7D9;
+}
+
+/* ===== Barra de navegación (igual en las dos páginas) ===== */
+.barra {
+    background-color: #604734;
+    min-height: 100px;
+    padding: 16px 24px;
+}
+
+/* Contenedor de los 4 botones: flexbox en fila (computador) o columna (tablet/celular) */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 12px;
+    width: 100%;
+}
+
+.boton-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FCF7D9;
+    border: 1px solid #FCF7D9;
+}
+
+.boton-nav:hover,
+.boton-nav.activo {
+    background-color: #F0C5D4;
+    border-color: #F0C5D4;
+    color: #604734;
+}
+
+.icono-nav {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Cuando el botón está en rosa, el ícono blanco se vuelve café para que se vea */
+.boton-nav:hover .icono-nav,
+.boton-nav.activo .icono-nav {
+    filter: brightness(0.35);
+}
+
+/* Computador: los botones en una sola fila, centrados */
+@media (min-width: 992px) {
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 0;
+    }
+}
+
+/* ===== Página de inicio (cajas) ===== */
+.caja2  { height: 300px; background-color: #FCF7D9; }
+.caja3  { height: 300px; background-color: #F6D8D6; }
+.caja4  { height: 300px; background-color: #F0C5D4; }
+.caja5  { height: 300px; background-color: #FCF7D9; }
+.caja6  { height: 300px; background-color: #F6D8D6; }
+.caja7  { height: 300px; background-color: #F0C5D4; }
+.caja8  { height: 300px; background-color: #FCF7D9; }
+.caja9  { height: 300px; background-color: #F6D8D6; }
+.caja10 { height: 300px; background-color: #604734; color: #FCF7D9; }
+
+/* ===== Página de pseudoclases ===== */
+
+/* X 1: título PSEUDOCLASES */
+.titulo-x {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 200px;
+    padding: 24px;
+    background-color: #F6D8D6;
+    text-align: center;
+}
+
+.titulo-x-texto {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 2.4rem;
+    letter-spacing: 4px;
+    color: #604734;
+}
+
+.titulo-x-sub {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.titulo-x-sub span {
+    color: #C98BA4;
+}
+
+@media (min-width: 768px) {
+    .titulo-x { min-height: 280px; }
+    .titulo-x-texto { font-size: 4rem; letter-spacing: 8px; }
+}
+
+@media (min-width: 992px) {
+    .titulo-x { min-height: 360px; }
+    .titulo-x-texto { font-size: 6rem; letter-spacing: 12px; }
+    .titulo-x-sub { font-size: 1.8rem; }
+}
+
+/* X 2: imagen que solo se ve en celular */
+.imagen-x {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Zona H1 + P y caja de sintaxis: columna en celular/tablet, fila en computador */
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+
+.intro-texto {
+    flex: 2;
+}
+
+.intro-texto h1 {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 2.6rem;
+}
+
+.intro-sintaxis {
+    flex: 1;
+    background-color: #F0C5D4;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.intro-sintaxis pre {
+    background-color: #604734;
+    color: #FCF7D9;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .intro {
+        flex-direction: row;
+        align-items: stretch;
+    }
+}
+
+/* 25 tarjetas de pseudoclases con flexbox:
+   celular = 2 columnas, tablet = 3 columnas, computador = 5 columnas */
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 24px 24px;
+}
+
+.tarjeta {
+    flex: 0 0 calc((100% - 12px) / 2);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: #F6D8D6;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.tarjeta:hover {
+    background-color: #F0C5D4;
+}
+
+@media (min-width: 768px) {
+    .tarjeta { flex-basis: calc((100% - 24px) / 3); }
+}
+
+@media (min-width: 992px) {
+    .tarjeta { flex-basis: calc((100% - 48px) / 5); }
+}
+
+.tarjeta .categoria {
+    align-self: flex-start;
+    background-color: #604734;
+    color: #FCF7D9;
+    font-size: 0.75rem;
+    border-radius: 20px;
+    padding: 2px 10px;
+}
+
+.tarjeta h2 {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.tarjeta p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.pie {
+    background-color: #604734;
+    color: #FCF7D9;
+    padding: 24px;
+    text-align: center;
+}
+
+.pie a {
+    color: #F0C5D4;
+}

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pseudoclases CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="css/estilos.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegación: en computador se ven los 4 botones; en tablet y celular aparece el botón ☰ -->
+    <nav class="navbar navbar-expand-lg barra" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <div class="menu">
+                    <a href="index.html" class="btn boton-nav" role="button">
+                        <img src="img/EstructuraySintaxis-removebg-preview.png" alt="" class="icono-nav">
+                        Estructura y sintaxis
+                    </a>
+                    <a href="#" class="btn boton-nav" role="button">
+                        <img src="img/Especifidad-removebg-preview.png" alt="" class="icono-nav">
+                        Niveles de especificidad
+                    </a>
+                    <a href="pseudoclases.html" class="btn boton-nav activo" role="button">
+                        <img src="img/Pseudo-removebg-preview.png" alt="" class="icono-nav">
+                        Pseudoclases y elementos
+                    </a>
+                    <a href="#" class="btn boton-nav" role="button">
+                        <img src="img/Boxmodel-removebg-preview.png" alt="" class="icono-nav">
+                        Box model
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- X 1: imagen con el título PSEUDOCLASES (computador, tablet y celular) -->
+        <svg class="imagen-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="Pseudoclases">
+          <rect width="1200" height="360" fill="#F6D8D6"/>
+          <circle cx="1110" cy="40" r="150" fill="#F0C5D4"/>
+          <circle cx="70" cy="340" r="130" fill="#FCF7D9"/>
+          <circle cx="1040" cy="300" r="18" fill="#604734"/>
+          <circle cx="160" cy="70" r="12" fill="#F0C5D4"/>
+
+          <!-- llaves de código -->
+          <text x="40" y="225" font-family="Consolas, 'Courier New', monospace" font-size="150" fill="#F0C5D4">{</text>
+          <text x="1080" y="225" font-family="Consolas, 'Courier New', monospace" font-size="150" fill="#F0C5D4">}</text>
+
+          <!-- título -->
+          <text x="600" y="185" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="100" letter-spacing="6" fill="#604734">PSEUDOCLASES</text>
+          <text x="600" y="245" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="40" fill="#604734">selector<tspan fill="#C98BA4">:pseudoclase</tspan></text>
+
+          <!-- etiquetas -->
+          <g font-family="Consolas, 'Courier New', monospace" font-size="24" text-anchor="middle">
+            <rect x="360" y="275" width="140" height="44" rx="22" fill="#604734"/>
+            <text x="430" y="305" fill="#FCF7D9">:hover</text>
+            <rect x="530" y="275" width="140" height="44" rx="22" fill="#604734"/>
+            <text x="600" y="305" fill="#FCF7D9">:focus</text>
+            <rect x="700" y="275" width="150" height="44" rx="22" fill="#604734"/>
+            <text x="775" y="305" fill="#FCF7D9">:checked</text>
+          </g>
+        </svg>
+
+        <!-- X 2: imagen solo en celular -->
+        <svg class="imagen-x d-md-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Ejemplos de :checked, :focus, :first-child y :disabled">
+          <rect width="600" height="400" fill="#F0C5D4"/>
+          <circle cx="540" cy="360" r="110" fill="#F6D8D6"/>
+
+          <g font-family="Arial, sans-serif" fill="#604734">
+            <!-- :checked -->
+            <rect x="50" y="50" width="44" height="44" rx="8" fill="#604734"/>
+            <path d="M60 72 l10 10 l18 -20" fill="none" stroke="#FCF7D9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="112" y="82" font-size="28" font-family="Consolas, 'Courier New', monospace">:checked</text>
+
+            <!-- :focus -->
+            <rect x="44" y="134" width="300" height="64" rx="14" fill="none" stroke="#FCF7D9" stroke-width="6"/>
+            <rect x="50" y="140" width="288" height="52" rx="10" fill="#FCF7D9" stroke="#604734" stroke-width="3"/>
+            <rect x="66" y="152" width="3" height="28" fill="#604734"/>
+            <text x="362" y="176" font-size="28" font-family="Consolas, 'Courier New', monospace">:focus</text>
+
+            <!-- :first-child -->
+            <rect x="50" y="240" width="200" height="34" rx="8" fill="#604734"/>
+            <rect x="50" y="284" width="200" height="34" rx="8" fill="#FCF7D9"/>
+            <rect x="50" y="328" width="200" height="34" rx="8" fill="#FCF7D9"/>
+            <text x="270" y="266" font-size="28" font-family="Consolas, 'Courier New', monospace">:first-child</text>
+
+            <!-- :disabled -->
+            <rect x="300" y="300" width="160" height="52" rx="26" fill="#FCF7D9" opacity="0.55" stroke="#604734" stroke-width="3" stroke-dasharray="8 6"/>
+            <text x="380" y="334" text-anchor="middle" font-size="22" opacity="0.6">:disabled</text>
+          </g>
+        </svg>
+
+        <!-- H1 + P -->
+        <section class="intro">
+            <div class="intro-texto">
+                <h1>Pseudoclases CSS</h1>
+                <p>Las pseudoclases permiten seleccionar elementos HTML según su comportamiento o el estado en el que
+                    se encuentran en el navegador, y no solo por su etiqueta, clase o id. La más conocida es
+                    <code>:hover</code>, que cambia el estilo de un elemento cuando pasamos el ratón por encima.</p>
+                <p>Se agrupan en siete tipos: de interacción, de ubicación, de idioma, de estructura, de formulario,
+                    de estado y de paginado.</p>
+            </div>
+            <div class="intro-sintaxis">
+                <h2 class="h5">Sintaxis</h2>
+                <p>Se escriben poniendo dos puntos <code>:</code> después del selector y luego el nombre de la
+                    pseudoclase.</p>
+<pre>a {
+  color: #604734;
+}
+
+a:hover {
+  color: #F0C5D4;
+}</pre>
+            </div>
+        </section>
+
+        <!-- 25 cajas con los tipos de pseudoclases -->
+        <section class="tarjetas">
+            <article class="tarjeta">
+                <span class="categoria">Interacción</span>
+                <h2>:hover</h2>
+                <p>Se activa cuando el usuario pasa el ratón (u otro puntero) por encima del elemento.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Interacción</span>
+                <h2>:active</h2>
+                <p>Se aplica mientras el elemento está siendo pulsado o clicado.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Interacción</span>
+                <h2>:focus</h2>
+                <p>Se aplica cuando el elemento tiene el foco, por ejemplo un campo de texto seleccionado.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Interacción</span>
+                <h2>:focus-within</h2>
+                <p>Se aplica a un contenedor cuando alguno de los elementos que tiene dentro recibe el foco.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Interacción</span>
+                <h2>:focus-visible</h2>
+                <p>Se aplica al elemento con foco solo cuando el navegador considera que el foco debe verse, como al navegar con el teclado.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Ubicación</span>
+                <h2>:link</h2>
+                <p>Selecciona los enlaces que el usuario todavía no ha visitado.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Ubicación</span>
+                <h2>:visited</h2>
+                <p>Selecciona los enlaces que el usuario ya ha visitado.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Ubicación</span>
+                <h2>:target</h2>
+                <p>Selecciona el elemento cuyo id coincide con el ancla de la URL, por ejemplo #contacto.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Idioma</span>
+                <h2>:lang()</h2>
+                <p>Selecciona elementos según el idioma en que están escritos, por ejemplo :lang(es).</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Idioma</span>
+                <h2>:dir()</h2>
+                <p>Selecciona elementos según la dirección del texto: de izquierda a derecha (ltr) o de derecha a izquierda (rtl).</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:root</h2>
+                <p>Selecciona el elemento raíz del documento, que en HTML es la etiqueta &lt;html&gt;.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:first-child</h2>
+                <p>Selecciona el elemento que es el primer hijo dentro de su padre.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:last-child</h2>
+                <p>Selecciona el elemento que es el último hijo dentro de su padre.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:only-child</h2>
+                <p>Selecciona el elemento que es el único hijo de su padre.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:nth-child()</h2>
+                <p>Selecciona hijos según su posición: :nth-child(2), :nth-child(odd), :nth-child(even)…</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:first-of-type</h2>
+                <p>Selecciona el primer elemento de su tipo dentro del padre, por ejemplo el primer &lt;p&gt;.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estructura</span>
+                <h2>:empty</h2>
+                <p>Selecciona los elementos que no tienen ningún contenido dentro.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Formulario</span>
+                <h2>:checked</h2>
+                <p>Selecciona las casillas o botones de opción que están marcados.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Formulario</span>
+                <h2>:disabled</h2>
+                <p>Selecciona los campos de formulario que están desactivados.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Formulario</span>
+                <h2>:required</h2>
+                <p>Selecciona los campos que son obligatorios porque tienen el atributo required.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Formulario</span>
+                <h2>:placeholder-shown</h2>
+                <p>Selecciona los campos que están mostrando su texto de ejemplo (placeholder) porque siguen vacíos.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Formulario</span>
+                <h2>:valid</h2>
+                <p>Selecciona los campos cuyo valor cumple la validación.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Formulario</span>
+                <h2>:invalid</h2>
+                <p>Selecciona los campos cuyo valor no cumple la validación, como un correo mal escrito.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Estado</span>
+                <h2>:fullscreen</h2>
+                <p>Selecciona el elemento que se está mostrando a pantalla completa.</p>
+            </article>
+            <article class="tarjeta">
+                <span class="categoria">Paginado</span>
+                <h2>:first</h2>
+                <p>Selecciona la primera página de un documento al imprimirlo; se usa junto con @page.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="pie">
+        Información tomada de
+        <a href="https://lenguajecss.com/css/pseudoclases/que-son/" target="_blank" rel="noopener">lenguajecss.com
+            — ¿Qué son las pseudoclases?</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
