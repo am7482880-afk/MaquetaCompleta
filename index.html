@@ -8,50 +8,274 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="css/estilos.css" rel="stylesheet">
+
+    <!-- Estilos del contenido de las cajas (van aquí para que funcionen aunque no actualices estilos.css) -->
+    <style>
+        /* Caja 1: barra de botones */
+        .caja1 {
+            min-height: 100px;
+            background-color: #604734;
+        }
+
+        /* Imagen de la caja 2: se ajusta al tamaño de la caja */
+        .caja2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .imagen-caja {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 300px;
+        }
+
+        /* Contenido de las cajas: centrado; si no cabe, se hace scroll dentro de la caja */
+        .info {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: safe center;
+            gap: 8px;
+            overflow: auto;
+            padding: 24px 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .info .numero {
+            align-self: flex-start;
+            background-color: #604734;
+            color: #FCF7D9;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            padding: 2px 12px;
+        }
+
+        .info h2 {
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .info p,
+        .info ul {
+            margin: 0;
+        }
+
+        .info ul {
+            padding-left: 20px;
+        }
+
+        .info li {
+            margin-bottom: 4px;
+        }
+
+        .info code {
+            color: #604734;
+            background-color: rgba(255, 255, 255, 0.55);
+            border-radius: 4px;
+            padding: 1px 5px;
+        }
+
+        .info pre {
+            background-color: #604734;
+            color: #FCF7D9;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
+        /* Celular: letra un poco más pequeña porque las cajas son angostas */
+        @media (max-width: 767px) {
+            .info {
+                padding: 16px 12px;
+                font-size: 0.85rem;
+            }
+
+            .info h2 {
+                font-size: 1.15rem;
+            }
+
+            .info pre {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Caja 10 (café): colores invertidos */
+        .caja10 .info .numero {
+            background-color: #F0C5D4;
+            color: #604734;
+        }
+
+        .caja10 .info code {
+            color: #604734;
+            background-color: #FCF7D9;
+        }
+
+        .caja10 .info a {
+            color: #F0C5D4;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Barra de navegación: en computador se ven los 4 botones; en tablet y celular aparece el botón ☰ -->
-    <nav class="navbar navbar-expand-lg barra" data-bs-theme="dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
-                aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <div class="menu">
-                    <a href="index.html" class="btn boton-nav activo" role="button">
-                        <img src="img/EstructuraySintaxis-removebg-preview.png" alt="" class="icono-nav">
-                        Estructura y sintaxis
-                    </a>
-                    <a href="#" class="btn boton-nav" role="button">
-                        <img src="img/Especifidad-removebg-preview.png" alt="" class="icono-nav">
-                        Niveles de especificidad
-                    </a>
-                    <a href="pseudoclases.html" class="btn boton-nav" role="button">
-                        <img src="img/Pseudo-removebg-preview.png" alt="" class="icono-nav">
-                        Pseudoclases y elementos
-                    </a>
-                    <a href="#" class="btn boton-nav" role="button">
-                        <img src="img/Boxmodel-removebg-preview.png" alt="" class="icono-nav">
-                        Box model
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <div class="container-fluid">
         <div class="row">
-            <header class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-12 col-xxl-12 caja2">caja 2</header>
-            <aside class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-4 col-xxl-4 caja3">caja 3</aside>
-            <section class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-4 col-xxl-4 caja4">caja 4</section>
-            <aside class="col-6 col-sm-6 col-md-10 col-lg-10 col-xl-4 col-xxl-4 caja5">caja 5</aside>
-            <section class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-3 col-xxl-3 caja6">caja 6</section>
-            <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 col-xxl-2 caja7">caja 7</section>
-            <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-7 col-xxl-7 caja8">caja 8</section>
-            <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-5 col-xxl-5 caja9">caja 9</section>
-            <footer class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 caja10">caja 10</footer>
+            <!-- Caja 1: barra con los 4 botones -->
+            <nav
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 caja1 d-flex flex-wrap gap-2 p-4 justify-content-center">
+
+                <a href="index.html" class="btn boton-nav activo" role="button">
+                    <img src="img/EstructuraySintaxis-removebg-preview.png" alt="" class="icono-nav">
+                    Estructura y sintaxis
+                </a>
+                <a href="#" class="btn boton-nav" role="button">
+                    <img src="img/Especifidad-removebg-preview.png" alt="" class="icono-nav">
+                    Niveles de especificidad
+                </a>
+                <a href="pseudoclases.html" class="btn boton-nav" role="button">
+                    <img src="img/Pseudo-removebg-preview.png" alt="" class="icono-nav">
+                    Pseudoclases y elementos
+                </a>
+                <a href="#" class="btn boton-nav" role="button">
+                    <img src="img/Boxmodel-removebg-preview.png" alt="" class="icono-nav">
+                    Box model
+                </a>
+
+            </nav>
+            <header class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-12 col-xxl-12 caja2">
+                <!-- Imagen: partes de una regla CSS -->
+                <svg class="imagen-caja" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 800 300" role="img"
+                    aria-label="Estructura de una regla CSS: selector, llaves, propiedad y valor">
+                    <!-- título -->
+                    <text x="400" y="52" text-anchor="middle" font-family="Georgia, serif" font-weight="bold"
+                        font-size="40" letter-spacing="3" fill="#604734">ESTRUCTURA Y SINTAXIS</text>
+
+                    <!-- regla CSS -->
+                    <rect x="120" y="85" width="560" height="100" rx="18" fill="#604734" />
+                    <text x="155" y="152" font-family="'Courier New', monospace" font-size="48" font-weight="bold"
+                        fill="#FCF7D9">p { color: <tspan fill="#F0C5D4">red</tspan>; }</text>
+
+                    <!-- flechas y nombres de cada parte -->
+                    <g stroke="#604734" stroke-width="3" stroke-linecap="round">
+                        <line x1="169" y1="192" x2="169" y2="212" />
+                        <line x1="342" y1="192" x2="342" y2="212" />
+                        <line x1="515" y1="192" x2="515" y2="212" />
+                        <line x1="630" y1="192" x2="630" y2="212" />
+                    </g>
+                    <g font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle">
+                        <rect x="114" y="216" width="110" height="34" rx="17" fill="#F0C5D4" />
+                        <text x="169" y="240" fill="#604734">selector</text>
+                        <rect x="282" y="216" width="120" height="34" rx="17" fill="#F0C5D4" />
+                        <text x="342" y="240" fill="#604734">propiedad</text>
+                        <rect x="475" y="216" width="80" height="34" rx="17" fill="#F0C5D4" />
+                        <text x="515" y="240" fill="#604734">valor</text>
+                        <rect x="590" y="216" width="80" height="34" rx="17" fill="#F6D8D6" />
+                        <text x="630" y="240" fill="#604734">llave</text>
+                    </g>
+
+                    <text x="400" y="288" text-anchor="middle" font-family="Georgia, serif" font-style="italic"
+                        font-size="24" fill="#604734">selector { propiedad: valor; }</text>
+                </svg>
+            </header>
+            <aside class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-4 col-xxl-4 caja3">
+                <div class="info">
+                    <span class="numero">01</span>
+                    <h2>¿Qué es un documento CSS?</h2>
+                    <p>Es un archivo de texto, igual que un HTML, pero con extensión <code>.css</code>. Dentro van las
+                        órdenes de estilo que el navegador lee y aplica a la página.</p>
+                </div>
+            </aside>
+            <section class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-4 col-xxl-4 caja4">
+                <div class="info">
+                    <span class="numero">02</span>
+                    <h2>Enlazar CSS con HTML</h2>
+                    <p>Lo recomendable es usar la etiqueta <code>&lt;link&gt;</code> dentro del
+                        <code>&lt;head&gt;</code>. En <code>href</code> va el nombre del archivo:
+                    </p>
+                    <pre>&lt;link rel="stylesheet"
+      href="css/estilos.css"&gt;</pre>
+                </div>
+            </section>
+            <aside class="col-6 col-sm-6 col-md-10 col-lg-10 col-xl-4 col-xxl-4 caja5">
+                <div class="info">
+                    <span class="numero">03</span>
+                    <h2>Estructura de un bloque</h2>
+                    <p>Primero va el selector y luego, entre llaves, las reglas con su propiedad y su valor:</p>
+                    <pre>p {
+  color: red;   /* color de texto */
+}</pre>
+                    <p>Este bloque pinta de rojo todos los <code>&lt;p&gt;</code> de la página.</p>
+                </div>
+            </aside>
+            <section class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-3 col-xxl-3 caja6">
+                <div class="info">
+                    <span class="numero">04</span>
+                    <h2>Conceptos clave</h2>
+                    <ul>
+                        <li><strong>Selector:</strong> los elementos a los que se les da estilo.</li>
+                        <li><strong>Propiedad:</strong> la característica que se cambia, como el color.</li>
+                        <li><strong>Valor:</strong> el dato que se le da a la propiedad.</li>
+                        <li><strong>Regla:</strong> la pareja propiedad + valor.</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 col-xxl-2 caja7">
+                <div class="info">
+                    <span class="numero">05</span>
+                    <h2>Comentarios</h2>
+                    <p>Se escriben entre <code>/*</code> y <code>*/</code>. Son notas para las personas: el navegador
+                        las ignora.</p>
+                    <pre>/* Menú */</pre>
+                </div>
+            </section>
+            <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-7 col-xxl-7 caja8">
+                <div class="info">
+                    <span class="numero">06</span>
+                    <h2>Buenas prácticas</h2>
+                    <ul>
+                        <li><strong>Una regla por línea:</strong> el código se lee y se modifica más fácil.</li>
+                        <li><strong>Indentación:</strong> después de abrir la llave <code>{</code>, las propiedades
+                            se corren hacia la derecha.</li>
+                        <li><strong>Punto y coma al final:</strong> cada regla termina en <code>;</code>. En la última
+                            del bloque es opcional, pero conviene ponerlo siempre.</li>
+                    </ul>
+                    <p>No son obligatorias para que funcione, pero a medida que el CSS crece ayudan a mantenerlo
+                        ordenado.</p>
+                </div>
+            </section>
+            <section class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-5 col-xxl-5 caja9">
+                <div class="info">
+                    <span class="numero">07</span>
+                    <h2>Errores comunes</h2>
+                    <ul>
+                        <li>Olvidar el <code>&lt;link&gt;</code> en el HTML: los estilos no se aplican.</li>
+                        <li>No separar las reglas con <code>;</code>.</li>
+                        <li>Escribir mal el selector o la propiedad.</li>
+                        <li>Abrir un comentario con <code>/*</code> y no cerrarlo con <code>*/</code>.</li>
+                    </ul>
+                </div>
+            </section>
+            <footer class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 col-xxl-5 caja10">
+                <div class="info">
+                    <span class="numero">08</span>
+                    <h2>En resumen</h2>
+                    <p>Un archivo CSS está formado por muchos bloques: cada uno tiene un selector y, entre llaves,
+                        varias reglas <code>propiedad: valor;</code>.</p>
+                    <p>Información tomada de
+                        <a href="https://lenguajecss.com/css/introduccion/estructura-de-css/" target="_blank"
+                            rel="noopener">lenguajecss.com — Estructura de CSS</a>.
+                    </p>
+                </div>
+            </footer>
         </div>
     </div>
 
