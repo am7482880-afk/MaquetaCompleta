@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Especificidad CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/especificidad.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegación: en computador se ven los 4 botones; en tablet y celular aparece el botón ☰ -->
+    <nav class="navbar navbar-expand-lg barra" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <div class="menu">
+                    <a href="index.html" class="btn boton-nav" role="button">
+                        <img src="img/EstructuraySintaxis-removebg-preview.png" alt="" class="icono-nav">
+                        Estructura y sintaxis
+                    </a>
+                    <a href="especificidad.html" class="btn boton-nav activo" role="button">
+                        <img src="img/Especifidad-removebg-preview.png" alt="" class="icono-nav">
+                        Niveles de especificidad
+                    </a>
+                    <a href="pseudoclases.html" class="btn boton-nav" role="button">
+                        <img src="img/Pseudo-removebg-preview.png" alt="" class="icono-nav">
+                        Pseudoclases y elementos
+                    </a>
+                    <a href="#" class="btn boton-nav" role="button">
+                        <img src="img/Boxmodel-removebg-preview.png" alt="" class="icono-nav">
+                        Box model
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- X 1: imagen con el título ESPECIFICIDAD (computador, tablet y celular) -->
+        <svg class="imagen-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img"
+            aria-label="Especificidad">
+            <rect width="1200" height="360" fill="#F6D8D6" />
+            <circle cx="1110" cy="40" r="150" fill="#F0C5D4" />
+            <circle cx="70" cy="340" r="130" fill="#FCF7D9" />
+            <circle cx="1040" cy="300" r="18" fill="#604734" />
+            <circle cx="160" cy="70" r="12" fill="#F0C5D4" />
+
+            <!-- llaves de código -->
+            <text x="40" y="225" font-family="Consolas, 'Courier New', monospace" font-size="150"
+                fill="#F0C5D4">{</text>
+            <text x="1080" y="225" font-family="Consolas, 'Courier New', monospace" font-size="150"
+                fill="#F0C5D4">}</text>
+
+            <!-- título -->
+            <text x="600" y="185" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="100"
+                letter-spacing="6" fill="#604734">ESPECIFICIDAD</text>
+            <text x="600" y="245" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="40"
+                fill="#604734">¿qué regla <tspan fill="#C98BA4">gana</tspan>?</text>
+
+            <!-- etiquetas -->
+            <g font-family="Consolas, 'Courier New', monospace" font-size="24" text-anchor="middle">
+                <rect x="380" y="275" width="120" height="44" rx="22" fill="#604734" />
+                <text x="440" y="305" fill="#FCF7D9">#id</text>
+                <rect x="530" y="275" width="140" height="44" rx="22" fill="#604734" />
+                <text x="600" y="305" fill="#FCF7D9">.clase</text>
+                <rect x="700" y="275" width="120" height="44" rx="22" fill="#604734" />
+                <text x="760" y="305" fill="#FCF7D9">p</text>
+            </g>
+        </svg>
+
+        <!-- 1. Intro + marcador de puntaje -->
+        <section class="seccion esp-intro">
+            <div class="esp-intro-texto">
+                <h1>Especificidad CSS</h1>
+                <p class="destacado">Es la forma en que el navegador resuelve los conflictos cuando varias reglas le
+                    dan estilo a un mismo elemento: así decide qué estilos son más importantes y cuáles se
+                    aplican.</p>
+                <p>Para decidir, le da a cada selector un puntaje de cinco columnas. Cada parte del selector suma 1 en
+                    su columna y los puntajes se comparan de izquierda a derecha.</p>
+            </div>
+            <div class="marcador">
+                <div class="marcador-selector">#menu .item a</div>
+                <div class="marcador-columnas">
+                    <div class="marcador-columna"><span>!important</span><strong>0</strong></div>
+                    <div class="marcador-columna"><span>en línea</span><strong>0</strong></div>
+                    <div class="marcador-columna suma"><span>#id</span><strong>1</strong></div>
+                    <div class="marcador-columna suma"><span>.clase</span><strong>1</strong></div>
+                    <div class="marcador-columna suma"><span>elemento</span><strong>1</strong></div>
+                </div>
+                <p class="marcador-nota">1 id + 1 clase + 1 elemento = <code>0,0,1,1,1</code></p>
+            </div>
+        </section>
+
+        <!-- 2. Escalera de pesos -->
+        <section class="seccion escalera-fondo">
+            <h2>De menos a más peso</h2>
+            <p class="bajada">Cada escalón le gana a todos los que están por debajo.</p>
+            <div class="escalera">
+                <div class="escalon" style="--n: 1">
+                    <div class="escalon-bloque">
+                        <code>*</code>
+                        <small>0,0,0,0,0</small>
+                    </div>
+                    <p>Universal: no tiene peso, cualquier regla lo reescribe.</p>
+                </div>
+                <div class="escalon" style="--n: 2">
+                    <div class="escalon-bloque">
+                        <code>p</code>
+                        <small>0,0,0,0,1</small>
+                    </div>
+                    <p>Elementos: los estilos más básicos y fáciles de reescribir.</p>
+                </div>
+                <div class="escalon" style="--n: 3">
+                    <div class="escalon-bloque">
+                        <code>.clase</code>
+                        <small>0,0,0,1,0</small>
+                    </div>
+                    <p>Clases, atributos y pseudoclases: la mejor opción para dar estilos.</p>
+                </div>
+                <div class="escalon" style="--n: 4">
+                    <div class="escalon-bloque">
+                        <code>#id</code>
+                        <small>0,0,1,0,0</small>
+                    </div>
+                    <p>ID: pesa más que clases y etiquetas; mejor para funcionalidad.</p>
+                </div>
+                <div class="escalon" style="--n: 5">
+                    <div class="escalon-bloque">
+                        <code>style=""</code>
+                        <small>0,1,0,0,0</small>
+                    </div>
+                    <p>En línea: se aplica aunque el elemento tenga clases o id.</p>
+                </div>
+                <div class="escalon" style="--n: 6">
+                    <div class="escalon-bloque">
+                        <code>!important</code>
+                        <small>1,0,0,0,0</small>
+                    </div>
+                    <p>Pasa por encima de todo. Úsalo con mucho cuidado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Batallas de selectores -->
+        <section class="seccion">
+            <h2>¿Quién gana?</h2>
+            <p class="bajada">Dos reglas le dan estilo al mismo elemento. Gana la de mayor puntaje.</p>
+            <div class="batallas">
+                <article class="batalla">
+                    <div class="contendientes">
+                        <div class="rival ganador">
+                            <code>.boton</code>
+                            <small>0,0,0,1,0</small>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="rival">
+                            <code>button</code>
+                            <small>0,0,0,0,1</small>
+                        </div>
+                    </div>
+                    <p>Gana la clase, aunque <code>button</code> esté escrito de último: es más específica.</p>
+                </article>
+                <article class="batalla">
+                    <div class="contendientes">
+                        <div class="rival">
+                            <code>nav .menu a</code>
+                            <small>0,0,0,1,2</small>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="rival ganador">
+                            <code>#menu a</code>
+                            <small>0,0,1,0,1</small>
+                        </div>
+                    </div>
+                    <p>Gana el id: se compara de izquierda a derecha y la columna del id va antes que la de clases.</p>
+                </article>
+                <article class="batalla">
+                    <div class="contendientes">
+                        <div class="rival">
+                            <code>p { color: red; }</code>
+                            <small>0,0,0,0,1</small>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="rival ganador">
+                            <code>p { color: blue; }<br><small>(escrito después)</small></code>
+                            <small>0,0,0,0,1</small>
+                        </div>
+                    </div>
+                    <p>Empate: cuando dos reglas pesan lo mismo, gana la última que se escribió.</p>
+                </article>
+                <article class="batalla">
+                    <div class="contendientes">
+                        <div class="rival">
+                            <code>#titulo</code>
+                            <small>0,0,1,0,0</small>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="rival ganador">
+                            <code>style="color: pink"</code>
+                            <small>0,1,0,0,0</small>
+                        </div>
+                    </div>
+                    <p>Ganan los estilos en línea: pesan más que cualquier id.</p>
+                </article>
+                <article class="batalla">
+                    <div class="contendientes">
+                        <div class="rival">
+                            <code>style="color: pink"</code>
+                            <small>0,1,0,0,0</small>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="rival ganador">
+                            <code>color: brown !important</code>
+                            <small>1,0,0,0,0</small>
+                        </div>
+                    </div>
+                    <p>Gana <code>!important</code>: reescribe cualquier estilo, incluso los de línea.</p>
+                </article>
+                <article class="batalla">
+                    <div class="contendientes">
+                        <div class="rival">
+                            <code>*</code>
+                            <small>0,0,0,0,0</small>
+                        </div>
+                        <span class="vs">vs</span>
+                        <div class="rival ganador">
+                            <code>div</code>
+                            <small>0,0,0,0,1</small>
+                        </div>
+                    </div>
+                    <p>Gana el elemento: el selector universal no tiene peso.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 4. Cómo decide el navegador -->
+        <section class="seccion pasos-fondo">
+            <h2>Así decide el navegador</h2>
+            <p class="bajada">La cascada, paso a paso.</p>
+            <ol class="pasos">
+                <li class="paso">
+                    <div>
+                        <h3>Lee de arriba hacia abajo</h3>
+                        <p>Recorre el CSS y va clasificando las reglas según su importancia.</p>
+                    </div>
+                </li>
+                <li class="paso">
+                    <div>
+                        <h3>Ignora lo que no entiende</h3>
+                        <p>Un error no detiene el CSS: si un valor no es válido, lo salta y sigue.</p>
+                    </div>
+                </li>
+                <li class="paso">
+                    <div>
+                        <h3>Calcula el puntaje</h3>
+                        <p>Si varias reglas chocan con distinta importancia, gana la de mayor puntaje.</p>
+                    </div>
+                </li>
+                <li class="paso">
+                    <div>
+                        <h3>Desempata por orden</h3>
+                        <p>Si pesan lo mismo, se queda con la última que se escribió.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 5. Consejos -->
+        <section class="seccion">
+            <h2>Consejos</h2>
+            <p class="bajada">Para que la especificidad no se vuelva un problema.</p>
+            <div class="consejos">
+                <div class="consejo">
+                    <p><strong>Busca el equilibrio:</strong> lo bastante específico para que se aplique y lo bastante
+                        general para poder reescribirlo.</p>
+                </div>
+                <div class="consejo">
+                    <p><strong>Prefiere las clases</strong> para dar estilos, y deja los id para funcionalidad.</p>
+                </div>
+                <div class="consejo">
+                    <p><strong>Evita selectores muy largos:</strong> cuestan leerlos y mantenerlos.</p>
+                </div>
+                <div class="consejo">
+                    <p><strong>Usa una metodología</strong> como BEM para mantener el orden.</p>
+                </div>
+                <div class="consejo">
+                    <p><strong>Comenta y organiza</strong> tu CSS con el mismo cuidado que el HTML y el JS.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie">
+        Información tomada de
+        <a href="https://codigofacilito.com/articulos/especificidad-css" target="_blank" rel="noopener">Código Facilito
+            — Especificidad CSS</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
