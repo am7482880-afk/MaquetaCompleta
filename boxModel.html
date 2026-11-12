@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Box model CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="css/estilos.css" rel="stylesheet">
+    <link href="css/boxmodel.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegación: en computador se ven los 4 botones; en tablet y celular aparece el botón ☰ -->
+    <nav class="navbar navbar-expand-lg barra" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <div class="menu">
+                    <a href="index.html" class="btn boton-nav" role="button">
+                        <img src="img/EstructuraySintaxis-removebg-preview.png" alt="" class="icono-nav">
+                        Estructura y sintaxis
+                    </a>
+                    <a href="especificidad.html" class="btn boton-nav" role="button">
+                        <img src="img/Especifidad-removebg-preview.png" alt="" class="icono-nav">
+                        Niveles de especificidad
+                    </a>
+                    <a href="pseudoclases.html" class="btn boton-nav" role="button">
+                        <img src="img/Pseudo-removebg-preview.png" alt="" class="icono-nav">
+                        Pseudoclases y elementos
+                    </a>
+                    <a href="boxmodel.html" class="btn boton-nav activo" role="button">
+                        <img src="img/Boxmodel-removebg-preview.png" alt="" class="icono-nav">
+                        Box model
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- X 1: imagen con el título BOX MODEL (computador, tablet y celular) -->
+        <svg class="imagen-x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img"
+            aria-label="Box model">
+            <rect width="1200" height="360" fill="#F6D8D6" />
+            <circle cx="1110" cy="40" r="150" fill="#F0C5D4" />
+            <circle cx="70" cy="340" r="130" fill="#FCF7D9" />
+            <circle cx="1040" cy="300" r="18" fill="#604734" />
+            <circle cx="160" cy="70" r="12" fill="#F0C5D4" />
+
+            <!-- llaves de código -->
+            <text x="40" y="225" font-family="Consolas, 'Courier New', monospace" font-size="150"
+                fill="#F0C5D4">{</text>
+            <text x="1080" y="225" font-family="Consolas, 'Courier New', monospace" font-size="150"
+                fill="#F0C5D4">}</text>
+
+            <!-- título -->
+            <text x="600" y="185" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="100"
+                letter-spacing="6" fill="#604734">BOX MODEL</text>
+            <text x="600" y="245" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="40"
+                fill="#604734">todo es una <tspan fill="#C98BA4">caja</tspan></text>
+
+            <!-- etiquetas -->
+            <g font-family="Consolas, 'Courier New', monospace" font-size="24" text-anchor="middle">
+                <rect x="310" y="275" width="130" height="44" rx="22" fill="#604734" />
+                <text x="375" y="305" fill="#FCF7D9">margin</text>
+                <rect x="460" y="275" width="130" height="44" rx="22" fill="#604734" />
+                <text x="525" y="305" fill="#FCF7D9">border</text>
+                <rect x="610" y="275" width="130" height="44" rx="22" fill="#604734" />
+                <text x="675" y="305" fill="#FCF7D9">padding</text>
+                <rect x="760" y="275" width="130" height="44" rx="22" fill="#604734" />
+                <text x="825" y="305" fill="#FCF7D9">content</text>
+            </g>
+        </svg>
+
+        <!-- 1. Intro + caja dibujada con CSS -->
+        <section class="bm-seccion bm-intro">
+            <div class="bm-intro-texto">
+                <h1>Box model</h1>
+                <p class="bm-destacado">Cada elemento HTML se dibuja como una caja rectangular. Aunque uses
+                    <code>border-radius</code> para redondearla, solo cambia cómo se ve: sigue siendo una caja.
+                </p>
+                <p>Esa caja tiene cuatro capas, de adentro hacia afuera: <strong>content</strong>,
+                    <strong>padding</strong>, <strong>border</strong> y <strong>margin</strong>. El dibujo de esta
+                    sección está hecho con esas mismas capas en CSS.
+                </p>
+                <p class="bm-nota">Excepciones: las listas y las tablas generan más de una caja, y los elementos con
+                    <code>display: none</code> o <code>display: contents</code> no generan ninguna.
+                </p>
+            </div>
+
+            <div class="bm-diagrama" aria-label="Capas del box model">
+                <div class="capa capa-margin">
+                    <span class="capa-nombre">margin</span>
+                    <div class="capa capa-border">
+                        <span class="capa-nombre">border</span>
+                        <div class="capa capa-padding">
+                            <span class="capa-nombre">padding</span>
+                            <div class="capa capa-content">
+                                content
+                                <small>width × height</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Las cuatro áreas -->
+        <section class="bm-seccion bm-fondo-rosa">
+            <h2>Las cuatro áreas</h2>
+            <p class="bm-bajada">De adentro hacia afuera.</p>
+            <div class="bm-areas">
+                <article class="bm-area area-content">
+                    <span class="bm-num">1</span>
+                    <h3>Content</h3>
+                    <p>Lo que se ve: texto, imágenes, video… Su tamaño se controla con <code>width</code>,
+                        <code>height</code>, <code>min-*</code> y <code>max-*</code>.
+                    </p>
+                </article>
+                <article class="bm-area area-padding">
+                    <span class="bm-num">2</span>
+                    <h3>Padding</h3>
+                    <p>El espacio entre el contenido y el borde. Es transparente, pero el fondo de la caja se extiende
+                        por él. <strong>No acepta valores negativos.</strong></p>
+                </article>
+                <article class="bm-area area-border">
+                    <span class="bm-num">3</span>
+                    <h3>Border</h3>
+                    <p>La línea que rodea la caja. Se define con <code>border-style</code>, <code>border-width</code>
+                        y <code>border-color</code>.</p>
+                </article>
+                <article class="bm-area area-margin">
+                    <span class="bm-num">4</span>
+                    <h3>Margin</h3>
+                    <p>La separación con las otras cajas. Es transparente, no muestra el fondo y <strong>sí puede ser
+                            negativo.</strong></p>
+                </article>
+            </div>
+            <div class="bm-calculo">
+                <strong>Ojo con el tamaño:</strong> <code>width</code> y <code>height</code> solo miden el
+                <em>content</em>. El padding y el border se suman encima para dar el tamaño total de la caja.
+            </div>
+        </section>
+
+        <!-- 3. Bloque vs en línea -->
+        <section class="bm-seccion">
+            <h2>Bloque o en línea</h2>
+            <p class="bm-bajada">Depende de la propiedad <code>display</code>.</p>
+            <div class="bm-tipos">
+                <article class="bm-tipo">
+                    <h3>Caja de bloque</h3>
+                    <p>Ocupa todo el ancho de su contenedor. Ejemplo: <code>&lt;div&gt;</code>.</p>
+                    <div class="demo-zona">
+                        <div class="demo-div">&lt;div&gt;</div>
+                        <div class="demo-div">&lt;div&gt;</div>
+                    </div>
+                </article>
+                <article class="bm-tipo">
+                    <h3>Caja en línea</h3>
+                    <p>Solo ocupa el espacio de su contenido. Ejemplo: <code>&lt;span&gt;</code>.</p>
+                    <div class="demo-zona">
+                        <p class="demo-linea">Un texto con <span class="demo-span">&lt;span&gt;</span> y otro
+                            <span class="demo-span">&lt;span&gt;</span> en la misma línea.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 4. Atajos de padding y margin -->
+        <section class="bm-seccion bm-fondo-rosa-fuerte">
+            <h2>Atajos de padding y margin</h2>
+            <p class="bm-bajada">Los valores van como las agujas del reloj, empezando a las 12: arriba, derecha, abajo,
+                izquierda.</p>
+            <div class="bm-atajos">
+                <div class="bm-reloj" aria-hidden="true">
+                    <span class="reloj-top">top</span>
+                    <span class="reloj-right">right</span>
+                    <span class="reloj-bottom">bottom</span>
+                    <span class="reloj-left">left</span>
+                    <span class="reloj-centro">↻</span>
+                </div>
+                <div class="bm-ejemplos">
+                    <div class="bm-ejemplo">
+                        <div class="mini" style="padding: 10px;">
+                            <div></div>
+                        </div>
+                        <div>
+                            <code>padding: 10px;</code>
+                            <p>Los cuatro lados iguales.</p>
+                        </div>
+                    </div>
+                    <div class="bm-ejemplo">
+                        <div class="mini" style="padding: 10px 20px;">
+                            <div></div>
+                        </div>
+                        <div>
+                            <code>padding: 10px 20px;</code>
+                            <p>10px arriba y abajo, 20px a los lados.</p>
+                        </div>
+                    </div>
+                    <div class="bm-ejemplo">
+                        <div class="mini" style="padding: 10px 20px 30px;">
+                            <div></div>
+                        </div>
+                        <div>
+                            <code>padding: 10px 20px 30px;</code>
+                            <p>10px arriba, 20px a los lados y 30px abajo.</p>
+                        </div>
+                    </div>
+                    <div class="bm-ejemplo">
+                        <div class="mini" style="padding: 10px 20px 25px 5px;">
+                            <div></div>
+                        </div>
+                        <div>
+                            <code>padding: 10px 20px 25px 5px;</code>
+                            <p>Arriba 10px, derecha 20px, abajo 25px, izquierda 5px.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="bm-nota-centro">Lo mismo funciona con <code>margin</code>. Los recuadros rosados de arriba usan
+                ese mismo <code>padding</code> de verdad.</p>
+        </section>
+
+        <!-- 5. Estilos de borde -->
+        <section class="bm-seccion">
+            <h2>Estilos de borde</h2>
+            <p class="bm-bajada">Valores de <code>border-style</code>, dibujados con un borde de verdad. El atajo
+                es <code>border: solid 5px red;</code></p>
+            <div class="bm-bordes">
+                <div class="borde" style="border-style: solid;">solid</div>
+                <div class="borde" style="border-style: dotted;">dotted</div>
+                <div class="borde" style="border-style: dashed;">dashed</div>
+                <div class="borde" style="border-style: double;">double</div>
+                <div class="borde" style="border-style: groove;">groove</div>
+                <div class="borde" style="border-style: ridge;">ridge</div>
+                <div class="borde" style="border-style: inset;">inset</div>
+                <div class="borde" style="border-style: outset;">outset</div>
+                <div class="borde borde-vacio" style="border-style: none;">none</div>
+                <div class="borde borde-vacio" style="border-style: hidden;">hidden</div>
+            </div>
+            <pre class="bm-codigo">border-width: 5px 10px 15px 20px;
+border-style: solid dashed dotted double;
+border-color: red green blue brown;</pre>
+            <p class="bm-nota-centro">También se puede dar un valor por lado. Si no pones
+                <code>border-color</code>, usa el color del texto (<code>currentColor</code>).
+            </p>
+        </section>
+
+        <!-- 6. ¿Margin o padding? -->
+        <section class="bm-seccion bm-fondo-rosa">
+            <h2>¿Margin o padding?</h2>
+            <p class="bm-bajada">Las dos dan espacio, pero no sirven para lo mismo.</p>
+            <div class="bm-versus">
+                <article class="bm-opcion">
+                    <h3>Usa <code>padding</code> cuando…</h3>
+                    <ul>
+                        <li>El contenido no debe tocar el borde.</li>
+                        <li>El fondo tiene que cubrir el espacio extra.</li>
+                        <li>Quieres agrandar un elemento, como un botón.</li>
+                        <li>Quieres separar un hijo de su contenedor.</li>
+                    </ul>
+                </article>
+                <article class="bm-opcion bm-opcion-oscura">
+                    <h3>Usa <code>margin</code> cuando…</h3>
+                    <ul>
+                        <li>Quieres separar elementos hermanos.</li>
+                        <li>Quieres centrar horizontalmente.</li>
+                        <li>Quieres mover un elemento.</li>
+                        <li>Quieres superponer elementos.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- 7. Datos extra -->
+        <section class="bm-seccion">
+            <h2>Para tener en cuenta</h2>
+            <p class="bm-bajada">Detalles que ayudan a entender y depurar las cajas.</p>
+            <div class="bm-datos">
+                <article class="bm-dato">
+                    <h3>Outline</h3>
+                    <p>Se dibuja entre el border y el margin, pero <strong>no ocupa espacio</strong> ni es parte del
+                        box model. Se usa para accesibilidad con <code>:focus</code> y <code>:focus-within</code>.</p>
+                </article>
+                <article class="bm-dato">
+                    <h3>Colapso de márgenes</h3>
+                    <p>Cuando dos elementos vecinos tienen márgenes que se tocan, esos márgenes se fusionan en un solo
+                        espacio.</p>
+                </article>
+                <article class="bm-dato">
+                    <h3>Ver todas las cajas</h3>
+                    <p>Este truco dibuja el contorno de todos los elementos de la página:</p>
+                    <pre>* { outline: 1px solid red; }</pre>
+                </article>
+                <article class="bm-dato">
+                    <h3>En las DevTools</h3>
+                    <p>El inspector del navegador dibuja la caja con colores:</p>
+                    <div class="devtools">
+                        <span class="dt dt-content">content</span>
+                        <span class="dt dt-padding">padding</span>
+                        <span class="dt dt-border">border</span>
+                        <span class="dt dt-margin">margin</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie">
+        Información tomada de
+        <a href="https://dev.to/lupitacode/que-es-el-box-model-4mnj" target="_blank" rel="noopener">DEV Community
+            — ¿Qué es el box model?</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

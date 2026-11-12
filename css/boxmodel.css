@@ -1,0 +1,530 @@
+/* ===== Estilos de la página de box model (boxmodel.html) ===== */
+
+.bm-seccion {
+    padding: 32px 24px;
+}
+
+.bm-seccion h2 {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.bm-seccion h3 {
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.bm-seccion code {
+    color: #604734;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+    padding: 1px 5px;
+}
+
+.bm-bajada {
+    margin-bottom: 24px;
+}
+
+.bm-fondo-rosa {
+    background-color: #F6D8D6;
+}
+
+.bm-fondo-rosa-fuerte {
+    background-color: #F0C5D4;
+}
+
+.bm-nota-centro {
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 20px 0 0;
+}
+
+/* ===== 1. Intro + diagrama ===== */
+.bm-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+}
+
+.bm-intro-texto {
+    flex: 1;
+}
+
+.bm-intro-texto h1 {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 2.6rem;
+}
+
+.bm-destacado {
+    border-left: 6px solid #F0C5D4;
+    padding-left: 16px;
+    font-size: 1.15rem;
+}
+
+.bm-nota {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.bm-diagrama {
+    flex: 1;
+    width: 100%;
+    max-width: 560px;
+}
+
+/* Cada capa es una caja dentro de la otra */
+.capa {
+    position: relative;
+    border-radius: 12px;
+    padding: 34px 18px 18px;
+}
+
+.capa-nombre {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.capa-margin {
+    background-color: #F6D8D6;
+    border: 2px dashed #C98BA4;
+}
+
+.capa-border {
+    background-color: #604734;
+    color: #FCF7D9;
+}
+
+.capa-padding {
+    background-color: #F0C5D4;
+    color: #604734;
+}
+
+.capa-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+    padding: 18px;
+    background-color: #FCF7D9;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.capa-content small {
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+@media (min-width: 992px) {
+    .bm-intro {
+        flex-direction: row;
+    }
+}
+
+/* ===== 2. Las cuatro áreas ===== */
+.bm-areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.bm-area {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #FCF7D9;
+    border-radius: 14px;
+    border-top: 10px solid;
+    padding: 18px;
+}
+
+.bm-area p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.bm-area h3 {
+    margin: 0;
+}
+
+.area-content {
+    border-top-color: #FCF7D9;
+    outline: 2px solid #DDA9B8;
+    outline-offset: -2px;
+}
+
+.area-padding {
+    border-top-color: #F0C5D4;
+}
+
+.area-border {
+    border-top-color: #604734;
+}
+
+.area-margin {
+    border-top-color: #C98BA4;
+}
+
+.bm-num {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #604734;
+    color: #FCF7D9;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .bm-area {
+        flex-basis: calc(50% - 8px);
+    }
+}
+
+@media (min-width: 992px) {
+    .bm-area {
+        flex-basis: calc(25% - 12px);
+    }
+}
+
+.bm-calculo {
+    margin-top: 20px;
+    background-color: #604734;
+    color: #FCF7D9;
+    border-radius: 14px;
+    padding: 16px 20px;
+}
+
+.bm-calculo code {
+    color: #604734;
+    background-color: #F0C5D4;
+}
+
+/* ===== 3. Bloque vs en línea ===== */
+.bm-tipos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bm-tipo {
+    flex: 1;
+    border: 2px solid #F0C5D4;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.demo-zona {
+    background-color: #F6D8D6;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.demo-div {
+    background-color: #604734;
+    color: #FCF7D9;
+    font-family: Consolas, "Courier New", monospace;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+.demo-div+.demo-div {
+    margin-top: 8px;
+}
+
+.demo-linea {
+    margin: 0;
+    line-height: 2.2;
+}
+
+.demo-span {
+    background-color: #604734;
+    color: #FCF7D9;
+    font-family: Consolas, "Courier New", monospace;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+@media (min-width: 768px) {
+    .bm-tipos {
+        flex-direction: row;
+    }
+}
+
+/* ===== 4. Atajos de padding y margin ===== */
+.bm-atajos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.bm-reloj {
+    position: relative;
+    flex: 0 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #FCF7D9;
+    border: 6px solid #604734;
+    font-family: Consolas, "Courier New", monospace;
+    font-weight: bold;
+}
+
+.bm-reloj span {
+    position: absolute;
+    background-color: #604734;
+    color: #FCF7D9;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+}
+
+.reloj-top {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.reloj-right {
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.reloj-bottom {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.reloj-left {
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bm-reloj .reloj-centro {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    color: #604734;
+    font-size: 2.2rem;
+    padding: 0;
+}
+
+.bm-ejemplos {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.bm-ejemplo {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #FCF7D9;
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.bm-ejemplo p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+}
+
+/* Mini caja: el rosado es el padding real y el café es el contenido */
+.mini {
+    flex: 0 0 auto;
+    width: 90px;
+    background-color: #F0C5D4;
+    border: 2px solid #604734;
+    border-radius: 6px;
+}
+
+.mini div {
+    height: 22px;
+    background-color: #604734;
+    border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+    .bm-ejemplo {
+        flex-basis: calc(50% - 6px);
+    }
+}
+
+@media (min-width: 992px) {
+    .bm-atajos {
+        flex-direction: row;
+    }
+}
+
+/* ===== 5. Estilos de borde ===== */
+.bm-bordes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.borde {
+    flex: 1 1 calc(50% - 6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;
+    border-width: 6px;
+    border-color: #604734;
+    border-radius: 6px;
+    background-color: #F6D8D6;
+    font-family: Consolas, "Courier New", monospace;
+    font-weight: bold;
+}
+
+.borde-vacio {
+    background-color: transparent;
+    outline: 2px dashed #DDA9B8;
+    outline-offset: -2px;
+    opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+    .borde {
+        flex-basis: calc(20% - 10px);
+    }
+}
+
+.bm-codigo {
+    margin: 20px 0 0;
+    background-color: #604734;
+    color: #FCF7D9;
+    border-radius: 12px;
+    padding: 14px 18px;
+}
+
+/* ===== 6. ¿Margin o padding? ===== */
+.bm-versus {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bm-opcion {
+    flex: 1;
+    background-color: #FCF7D9;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.bm-opcion ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.bm-opcion li {
+    margin-bottom: 6px;
+}
+
+.bm-opcion-oscura {
+    background-color: #604734;
+    color: #FCF7D9;
+}
+
+.bm-opcion-oscura code {
+    color: #604734;
+    background-color: #F0C5D4;
+}
+
+@media (min-width: 768px) {
+    .bm-versus {
+        flex-direction: row;
+    }
+}
+
+/* ===== 7. Datos extra ===== */
+.bm-datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.bm-dato {
+    flex: 1 1 100%;
+    border: 2px solid #F0C5D4;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.bm-dato p {
+    font-size: 0.9rem;
+}
+
+.bm-dato pre {
+    margin: 0;
+    background-color: #604734;
+    color: #FCF7D9;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+    .bm-dato {
+        flex-basis: calc(50% - 8px);
+    }
+}
+
+@media (min-width: 992px) {
+    .bm-dato {
+        flex-basis: calc(25% - 12px);
+    }
+}
+
+/* Colores que usan las DevTools (pueden variar según el navegador) */
+.devtools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dt {
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.8rem;
+    color: #333333;
+}
+
+.dt-content {
+    background-color: #A8C8E8;
+}
+
+.dt-padding {
+    background-color: #C3D9A6;
+}
+
+.dt-border {
+    background-color: #F5DD8A;
+}
+
+.dt-margin {
+    background-color: #F3C08A;
+}
